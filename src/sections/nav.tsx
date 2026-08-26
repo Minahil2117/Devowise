@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { cn } from "../utils/cn";
 import { Logo, ArrowUpRight } from "../components/icons";
 
 const LINKS = [
-  { label: "Capabilities", href: "#capabilities" },
-  { label: "Industries", href: "#industries" },
-  { label: "Work", href: "#work" },
-  { label: "Stack", href: "#stack" },
-  { label: "Process", href: "#process" },
-  { label: "Studio", href: "#studio" },
+  { label: "Capabilities", href: "/capabilities" },
+  { label: "Industries", href: "/industries" },
+  { label: "Work", href: "/work" },
+  { label: "Stack", href: "/stack" },
+  { label: "Process", href: "/process" },
+  { label: "Studio", href: "/studio" },
 ];
 
 export function TopBar() {
@@ -18,15 +19,15 @@ export function TopBar() {
         <p className="font-mono text-[11px] uppercase tracking-[0.18em]">
           Senior product &amp; AI studio <span className="mx-2 text-fog/50">/</span> remote-first, worldwide
         </p>
-        <div className="flex items-center gap-6 font-mono text-[11px] uppercase tracking-[0.18em]">
+        <div className="flex items-center gap-6 font-mono text-[11px] lowercase tracking-[0.18em]">
           <a href="mailto:hello@devowise.com" className="link-sweep transition-colors hover:text-accent">
-            hello@devowise.com
+            contact@devowise.com
           </a>
           <span className="text-fog/40">·</span>
-          <a href="#contact" className="group inline-flex items-center gap-1.5 text-accent">
+          <Link to="/contact" className="group inline-flex items-center gap-1.5 text-accent">
             Let’s talk business
             <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -75,30 +76,30 @@ export function Nav() {
         aria-hidden
       />
       <div className="relative z-10 mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 lg:px-10">
-        <a href="#top" aria-label="Devowise home" className={cn("transition-colors", open && "text-paper")}>
+        <Link to="/" aria-label="Devowise home" className={cn("transition-colors", open && "text-paper")}>
           <Logo dark={open} />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
           {LINKS.map((l) => (
-            <a
+            <Link
               key={l.href}
-              href={l.href}
+              to={l.href}
               className="link-sweep font-mono text-[12px] font-medium uppercase tracking-[0.12em] text-mute transition-colors hover:text-ink"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="group hidden items-center gap-2.5 bg-ink px-5 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-paper transition-colors duration-300 hover:bg-accent sm:inline-flex"
           >
             Start a project
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </Link>
           <button
             onClick={() => setOpen(!open)}
             className={cn(
@@ -123,9 +124,9 @@ export function Nav() {
       >
         <div className="flex flex-1 flex-col justify-center gap-2 px-8">
           {LINKS.map((l, i) => (
-            <a
+            <Link
               key={l.href}
-              href={l.href}
+              to={l.href}
               onClick={() => setOpen(false)}
               className={cn(
                 "group flex items-baseline gap-4 border-b border-linedark py-4 transition-all duration-500",
@@ -137,16 +138,16 @@ export function Nav() {
               <span className="font-display text-3xl font-semibold tracking-tight group-hover:text-accent">
                 {l.label}
               </span>
-            </a>
+            </Link>
           ))}
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             onClick={() => setOpen(false)}
             className="group mt-8 inline-flex w-fit items-center gap-3 bg-accent px-6 py-4 font-mono text-[12px] font-semibold uppercase tracking-[0.14em] text-white"
           >
             Start a project
             <ArrowUpRight className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
         <div className="flex items-center justify-between px-8 pb-8 font-mono text-[11px] uppercase tracking-[0.16em] text-fog">
           <span>hello@devowise.com</span>

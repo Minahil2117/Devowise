@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import { TopBar, Nav } from "./sections/nav";
 import { Hero } from "./sections/hero";
 import { Capabilities } from "./sections/capabilities";
@@ -20,18 +21,34 @@ export default function App() {
       <Nav />
 
       <main>
-        <Hero />
-        <Capabilities />
-        <Industries />
-        <Certifications />
-        <Work />
-        <Stack />
-        <Process />
-        <Engagements />
-        <Studio />
-        <Testimonials />
-        <Faq />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/capabilities" element={<Capabilities />} />
+          <Route
+            path="/industries"
+            element={
+              <>
+                <Industries />
+                <Certifications />
+              </>
+            }
+          />
+          <Route path="/work" element={<Work />} />
+          <Route path="/stack" element={<Stack />} />
+          <Route path="/process" element={<Process />} />
+          <Route path="/engagements" element={<Engagements />} />
+          <Route
+            path="/studio"
+            element={
+              <>
+                <Studio />
+                <Testimonials />
+              </>
+            }
+          />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </main>
 
       <Footer />

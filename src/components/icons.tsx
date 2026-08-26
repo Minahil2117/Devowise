@@ -1,19 +1,21 @@
+import dwLogo from "./assets/dw-logo.png";
+
 type IconProps = { className?: string };
 
-export function LogoMark({ className = "h-8 w-8" }: IconProps) {
+export function LogoMark({ className = "h-8 w-8", dark = false }: IconProps & { dark?: boolean }) {
   return (
-    <svg viewBox="0 0 40 40" fill="none" className={className} aria-hidden>
-      <rect x="1.5" y="1.5" width="37" height="37" stroke="currentColor" strokeWidth="3" />
-      <path d="M13 10h8.2c6.1 0 10 4 10 10s-3.9 10-10 10H13V10z" fill="currentColor" />
-      <rect x="17" y="14" width="12" height="12" fill="var(--color-accent)" />
-    </svg>
+    <img
+      src={dwLogo}
+      alt="Devowise"
+      className={`${className} object-contain ${dark ? "invert" : ""}`}
+    />
   );
 }
 
 export function Logo({ dark = false }: { dark?: boolean }) {
   return (
-    <span className={`inline-flex items-center gap-2.5 ${dark ? "text-paper" : "text-ink"}`}>
-      <LogoMark className="h-8 w-8" />
+    <span className={`inline-flex items-center gap-0.5 ${dark ? "text-paper" : "text-ink"}`}>
+      <LogoMark className="h-8 w-8" dark={dark} />
       <span className="font-display text-lg font-semibold tracking-tight">
         devowise<span className="text-accent">.</span>
       </span>
